@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { Search, MapPin, Calendar, Users } from 'lucide-react';
 
 export default function Hero() {
@@ -73,10 +74,10 @@ export default function Hero() {
               </div>
             </div>
 
-            <button className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-lg shadow-blue-500/20 active:scale-95">
+            <Link href="/destinations" className="bg-blue-600 hover:bg-blue-700 text-white py-4 px-8 rounded-xl font-bold flex items-center justify-center gap-2 transition-all shadow-lg shadow-blue-500/20 active:scale-95">
               <Search size={20} />
               Search
-            </button>
+            </Link>
           </div>
         </motion.div>
       </div>

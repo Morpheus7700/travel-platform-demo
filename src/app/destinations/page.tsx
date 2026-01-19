@@ -1,23 +1,35 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { Star, MapPin, ArrowRight } from 'lucide-react';
+import Navbar from '@/components/sections/Navbar';
 import { destinations } from '@/data/destinations';
+import { motion } from 'framer-motion';
+import { Star, MapPin, Search, Filter } from 'lucide-react';
 
-export default function FeaturedDestinations() {
+export default function DestinationsPage() {
   return (
-    <section className="py-24 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+    <main className="min-h-screen bg-white pb-20">
+      <Navbar />
+      <div className="pt-32 px-6 max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
           <div>
-            <span className="text-blue-600 font-bold uppercase tracking-widest text-sm">Top Picks</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mt-2">Explore Popular Destinations</h2>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900">Explore Destinations</h1>
+            <p className="text-gray-500 mt-2">Discover the world's most beautiful and exclusive locations.</p>
           </div>
-          <Link href="/destinations" className="flex items-center gap-2 text-blue-600 font-bold hover:gap-3 transition-all underline underline-offset-8">
-            View All Destinations <ArrowRight size={20} />
-          </Link>
+          
+          <div className="flex gap-4">
+             <div className="relative">
+               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
+               <input 
+                 type="text" 
+                 placeholder="Search destinations..." 
+                 className="pl-10 pr-4 py-2 border border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 w-64"
+               />
+             </div>
+             <button className="flex items-center gap-2 px-4 py-2 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors">
+               <Filter size={18} /> Filters
+             </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -25,8 +37,7 @@ export default function FeaturedDestinations() {
             <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               className="group cursor-pointer"
             >
@@ -42,9 +53,6 @@ export default function FeaturedDestinations() {
                 <div className="absolute top-4 right-4 bg-white px-2 py-1 rounded-lg flex items-center gap-1 shadow-sm">
                   <Star className="text-yellow-400 fill-current" size={12} />
                   <span className="text-xs font-bold text-gray-900">{item.rating}</span>
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8 text-white">
-                   <p className="text-sm line-clamp-2 text-gray-200">{item.description}</p>
                 </div>
               </div>
               
@@ -65,6 +73,6 @@ export default function FeaturedDestinations() {
           ))}
         </div>
       </div>
-    </section>
+    </main>
   );
 }
