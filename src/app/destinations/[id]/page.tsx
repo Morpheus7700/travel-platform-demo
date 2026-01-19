@@ -1,11 +1,12 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import Navbar from '@/components/sections/Navbar';
 import { destinations } from '@/data/destinations';
 import { motion } from 'framer-motion';
-import { MapPin, Star, CheckCircle } from 'lucide-react';
+import { MapPin, Star, CheckCircle, ArrowLeft } from 'lucide-react';
 
 export default function DestinationDetail() {
   const { id } = useParams();
@@ -31,6 +32,11 @@ export default function DestinationDetail() {
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-black/40" />
+        
+        <Link href="/destinations" className="absolute top-32 left-8 z-20 flex items-center gap-2 text-white/80 hover:text-white transition-colors font-medium">
+          <ArrowLeft size={20} /> Back to Destinations
+        </Link>
+
         <div className="absolute inset-0 flex items-center justify-center text-center px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

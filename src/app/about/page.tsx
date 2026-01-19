@@ -9,24 +9,42 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      <div className="pt-32 pb-20">
+      
+      {/* Hero Section */}
+      <section className="relative h-[50vh] flex items-center justify-center bg-gray-900 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=2000&auto=format&fit=crop" 
+            alt="Escapade on Wheels Journey" 
+            className="w-full h-full object-cover opacity-40"
+          />
+        </div>
+        <div className="relative z-10 text-center px-6">
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-5xl md:text-7xl font-bold text-white mb-4"
+          >
+            Our Story
+          </motion.h1>
+          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            Redefining travel through passion and exploration since 2020.
+          </p>
+        </div>
+      </section>
+
+      <div className="py-24">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
           >
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">About Escapade on Wheels</h1>
             <p className="text-xl text-gray-500 leading-relaxed mb-12">
               Escapade on Wheels (EOW) is a travel organization founded in 2020 by a group of passionate travelers and explorers. 
               Our mission is to provide unique and authentic travel experiences that connect people with the world and with themselves.
             </p>
           </motion.div>
-          
-          <img 
-            src="https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=2000&auto=format&fit=crop" 
-            alt="Escapade on Wheels Journey" 
-            className="w-full h-[500px] object-cover rounded-[3rem] shadow-2xl mb-24"
-          />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
             {[

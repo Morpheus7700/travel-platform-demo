@@ -2,13 +2,22 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Globe, User } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Pages that have a dark hero/image at the top where white text is preferred
+  const isDarkHeroPage = pathname === '/' || pathname.startsWith('/destinations/');
+  
+  // Determine if we should show the "solid" navbar style
+  // We show it if scrolled OR if we are on a page that doesn't have a dark hero at the top
+  const showSolidNav = isScrolled || !isDarkHeroPage;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,7 +30,7 @@ export default function Navbar() {
   return (
     <nav className={cn(
       "fixed top-0 w-full z-50 transition-all duration-500 px-6 py-4",
-      isScrolled ? "bg-white/80 backdrop-blur-lg shadow-sm py-3" : "bg-transparent"
+      showSolidNav ? "bg-white/90 backdrop-blur-lg shadow-sm py-3" : "bg-transparent"
     )}>
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
@@ -30,7 +39,7 @@ export default function Navbar() {
           </div>
           <span className={cn(
             "text-2xl font-bold tracking-tight transition-colors",
-            isScrolled ? "text-gray-900" : "text-white"
+            showSolidNav ? "text-gray-900" : "text-white"
           )}>
             Escapade<span className="text-blue-500">Wheels</span>
           </span>
@@ -41,15 +50,14 @@ export default function Navbar() {
           {[
             { label: 'Destinations', href: '/destinations' },
             { label: 'Experiences', href: '/experiences' },
-            { label: 'Packages', href: '/destinations' }, // Linking to destinations for now as a fallback
             { label: 'About', href: '/about' },
           ].map((item) => (
             <Link 
               key={item.label} 
               href={item.href} 
               className={cn(
-                "text-sm font-semibold hover:text-blue-500 transition-colors",
-                isScrolled ? "text-gray-600" : "text-gray-200"
+                "text-sm font-semibold transition-colors",
+                showSolidNav ? "text-gray-600 hover:text-blue-600" : "text-gray-200 hover:text-white"
               )}
             >
               {item.label}
@@ -60,7 +68,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           <Link href="/auth/signin" className={cn(
             "text-sm font-semibold px-4 py-2 rounded-full transition-colors",
-            isScrolled ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
+            showSolidNav ? "text-gray-900 hover:bg-gray-100" : "text-white hover:bg-white/10"
           )}>
             Sign In
           </Link>
@@ -75,9 +83,9 @@ export default function Navbar() {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? (
-            <X className={isScrolled ? "text-gray-900" : "text-white"} />
+            <X className={showSolidNav ? "text-gray-900" : "text-white"} />
           ) : (
-            <Menu className={isScrolled ? "text-gray-900" : "text-white"} />
+            <Menu className={showSolidNav ? "text-gray-900" : "text-white"} />
           )}
         </button>
       </div>
