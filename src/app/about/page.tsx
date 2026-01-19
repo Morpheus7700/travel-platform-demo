@@ -15,25 +15,25 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">Our Story</h1>
+            <h1 className="text-5xl font-bold text-gray-900 mb-6">About Escapade on Wheels</h1>
             <p className="text-xl text-gray-500 leading-relaxed mb-12">
-              NomadLux was born from a simple belief: travel should be more than just visiting places. 
-              It should be about connection, wonder, and seamless discovery.
+              Escapade on Wheels (EOW) is a travel organization founded in 2020 by a group of passionate travelers and explorers. 
+              Our mission is to provide unique and authentic travel experiences that connect people with the world and with themselves.
             </p>
           </motion.div>
           
           <img 
-            src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?q=80&w=2000&auto=format&fit=crop" 
-            alt="About us" 
+            src="https://images.unsplash.com/photo-1533105079780-92b9be482077?q=80&w=2000&auto=format&fit=crop" 
+            alt="Escapade on Wheels Journey" 
             className="w-full h-[500px] object-cover rounded-[3rem] shadow-2xl mb-24"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left">
             {[
-              { icon: Globe, title: "Our Mission", desc: "To provide the most seamless and inspiring luxury travel platform in the world." },
-              { icon: Heart, title: "Our Passion", desc: "We are travelers first. Every feature we build is designed to solve a traveler's need." },
-              { icon: Users, title: "Global Community", desc: "Join over 50,000 global nomads who trust NomadLux for their adventures." },
-              { icon: Shield, title: "Trusted Service", desc: "A decade of experience in high-end travel logistics and security." }
+              { icon: Globe, title: "Our Mission", desc: "To redefine travel by creating journeys that are as responsible as they are adventurous." },
+              { icon: Heart, title: "Curated Tours", desc: "Every tour is meticulously planned by our experts who have personally explored these terrains." },
+              { icon: Users, title: "Growing Community", desc: "Join hundreds of happy travelers who have discovered the world's hidden gems with EOW." },
+              { icon: Shield, title: "Safety First", desc: "We prioritize your safety with expert guides, reliable logistics, and 24/7 on-ground support." }
             ].map((item, i) => (
               <div key={i} className="flex gap-6">
                 <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center shrink-0">

@@ -18,11 +18,11 @@ function Footer() {
                 <Globe className="text-white" size={20} />
               </div>
               <span className="text-2xl font-bold tracking-tight">
-                Nomad<span className="text-blue-500">Lux</span>
+                Escapade<span className="text-blue-500">Wheels</span>
               </span>
             </div>
             <p className="text-gray-400 leading-relaxed">
-              Redefining luxury travel through personalized experiences and seamless digital innovation. Your world, beautifully curated.
+              Your gateway to authentic travel experiences. Founded in 2020 by explorers for explorers. Discover the world on wheels.
             </p>
             <div className="flex gap-4">
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (

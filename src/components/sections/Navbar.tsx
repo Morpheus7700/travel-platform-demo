@@ -32,7 +32,7 @@ export default function Navbar() {
             "text-2xl font-bold tracking-tight transition-colors",
             isScrolled ? "text-gray-900" : "text-white"
           )}>
-            Nomad<span className="text-blue-500">Lux</span>
+            Escapade<span className="text-blue-500">Wheels</span>
           </span>
         </Link>
 
